@@ -1,0 +1,135 @@
+Assignment:
+
+---------------------------------------------------
+1. Error in code 
+   Static is not defined in the main method.
+
+ public class Main { 
+ public static void main(String[] args) { 
+ System.out.println("Hello, World!"); 
+ } 
+} 
+
+-------------------------------------------------
+2. Error : Main Method not found in class Main
+ public is not defined.
+
+public class Main { 
+ public static void main(String[] args) { 
+ System.out.println("Hello, World!"); 
+ } 
+}
+--------------------------------------------------
+3. Error: Main method must return a value of type void in class Main,
+In Java, the void keyword in the main method signifies that the method does not return any value. 
+-------------------------------------------------------
+4. Error : Main Method not found in class Main 
+public static void main(String[] args)
+
+It allows the program to accept command-line arguments. 
+------------------------------------------------------------
+5.In single class only one should be present.
+it prints only "Main method with String[] args"
+--------------------------------------------------------
+6.error: cannot find symbol
+ int x = y + 10;
+         ^
+  symbol:   variable y
+It variables must be declared to specify their type and allocate memory
+-----------------------------------------------------------------
+7. error: incompatible types: String cannot be converted to int
+ int x = "Hello";
+----------------------------------------------------------------
+8. error: ')' or ',' expected
+ System.out.println("Hello, World!"
+                                   ^
+1 error
+------------------------------------------
+9.Main.java:3: error: not a statement
+ int class = 10;
+ ^
+Main.java:3: error: ';' expected
+ int class = 10;
+    ^
+Main.java:3: error: <identifier> expected
+ int class = 10;
+          ^
+Main.java:4: error: illegal start of expression
+ System.out.println(class);
+                    ^
+Main.java:4: error: <identifier> expected
+ System.out.println(class);
+                         ^
+5 errors
+it would create ambuigity and confusion
+--------------------------------------------------------------
+10. error: non-static method display() cannot be referenced from a static context
+ display();
+ ^
+Main.java:10: error: non-static method display(int) cannot be referenced from a static context
+ display(5);
+-----------------------------------------------------------------
+11.Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 3
+        at Main.main(Main.java:4)
+array has 3 elements and it is asking print 5th element of the array.
+------------------------------------------------------------------
+12.It prints infinte loop.
+to avoid this the loop should be break out
+-----------------------------------------------------------------
+13. Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "<local1>" is null
+        at Main.main(Main.java:4)
+null is a keyword that string doesnot contain anything.
+------------------------------------------------------------------
+14. error: incompatible types: String cannot be converted to double
+ double num = "Hello";
+-------------------------------------------------------------------
+15.error: incompatible types: possible lossy conversion from double to int
+ int result = num1 + num2;
+by using typecasting we can handle the different operations.
+-------------------------------------------------------------------
+16. result is 2.0
+num/4 involves integer division so it roundups to the integer value by typecasting.
+-------------------------------------------------------------------
+17. error: illegal start of expression
+ int result = a ** b;
+ in java ** operator is not valid
+-------------------------------------------------------------------
+18.result is 20. the operation is performed based on precedence rule
+-------------------------------------------------------------------
+19.Exception in thread "main" java.lang.ArithmeticException: / by zero at Main
+in java divide by zero is not defined so it cause an issue
+-------------------------------------------------------------------
+20. error: ';' expected
+ System.out.println("Hello, World")
+in java semicolon is important if it is missed it shows an error 
+-------------------------------------------------------------------21.error: reached end of file while parsing
+}
+ ^
+1 error
+-------------------------------------------------------------------
+22. error: illegal start of expression
+ static void displayMessage() {
+ ^
+Main.java:7: error: class, interface, enum, or record expected
+}
+^
+2 errors
+No, java doesnt support nested methods
+-------------------------------------------------------------------
+23.Value is 2
+   Value is 3
+   Default case
+beacuse the break statement is missed...
+-------------------------------------------------------------------24.the role of break statement in switch case is when the switch case statement is true the case is printed and exit the compiler if break is not there the compiler prints all the cases in switch
+-------------------------------------------------------------------25. error: selector type double is not allowed
+ switch(score) {
+       ^
+1 error
+double datatype is not allowed in switch. however if we work we can typecast the data
+-------------------------------------------------------------------
+26.a\OneDrive\Documents\Java prgms\Day 2\ASSIGNMENT>javac Main.java
+Main.java:8: error: duplicate case label
+ case 5:
+ ^
+1 error
+it shows the error.
