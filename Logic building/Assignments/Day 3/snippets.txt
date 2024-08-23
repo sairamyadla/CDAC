@@ -1,0 +1,129 @@
+-----------------------------------------------------
+1. 
+public class InfiniteForLoop {
+ public static void main(String[] args) {
+ for (int i = 0; i < 10; i--) {
+ System.out.println(i);
+ }
+ }
+}
+// Error to investigate: Why does this loop run infinitely? How should the loop control variable be adjusted?
+
+here,the loop run infinitely beacuse the loop control variable is being decremented the i value doesnt reach to condition. to reach the condition the i value should be incremented.
+---------------------------------------------------------------------
+2.public class IncorrectWhileCondition {
+ public static void main(String[] args) {
+ int count = 5;
+ while (count = 0) {
+ System.out.println(count);
+ count--;
+ }
+ }
+}
+
+error: incompatible types: int cannot be converted to boolean
+ while (count = 0) {
+here in while condition (count=0) assumes as boolean. so the loop not execute as expected.
+-------------------------------------------------------------------3.public class DoWhileIncorrectCondition {
+ public static void main(String[] args) {
+ int num = 0;
+ do {
+ System.out.println(num);
+ num++;
+ } while (num > 0);
+ }
+} 
+the while loop executes infinitely beacuse in the first iteration the condition is true and i is incremented to 1 and in next iteration it is true and so on.. while condition(num>0) is still true for every iteration.it runs infinitely.
+-------------------------------------------------------------------
+4.public class OffByOneErrorForLoop {
+ public static void main(String[] args) {
+ for (int i = 1; i <= 10; i++) {
+ System.out.println(i);
+ }
+ // Expected: 10 iterations with numbers 1 to 10
+ // Actual: Prints numbers 1 to 10, but the task expected only 1 to 9
+ }
+}
+
+the ouput prints 1 to 10. if we want from 1 to 9 we have to changer the condition i.e., (i<10)
+-------------------------------------------------------------------
+5.public class WrongInitializationForLoop {
+ public static void main(String[] args) {
+ for (int i = 10; i >= 0; i++) {
+ System.out.println(i);
+ }
+ }
+}
+
+the loop is running infinitely beacuse the i value is incrementing in each iteration and in the condition.to get execution i value should be decrement.
+-------------------------------------------------------------------
+6.public class MisplacedForLoopBody {
+ public static void main(String[] args) {
+ for (int i = 0; i < 5; i++)
+ System.out.println(i);
+ System.out.println("Done");
+ }
+}
+The done statement is outside of the loop so it is printed only once. if it is printed through loop it should be written inside the loop.
+-------------------------------------------------------------------
+7. public class UninitializedWhileLoop {
+ public static void main(String[] args) {
+ int count;
+ while (count < 10) {
+ System.out.println(count);
+ count++;
+ }
+ }
+}.error: variable count might not have been initialized
+ while (count < 10) { count should be intialised.
+-------------------------------------------------------------------8.public class OffByOneDoWhileLoop {
+ public static void main(String[] args) {
+ int num = 1;
+ do {
+ System.out.println(num);
+ num--;
+ } while (num > 0);
+ }
+} 
+while condition is false so it prints only one. to print 1 to 5 we need to adjust while condition i.e., num<=5 and num should be incremented.
+-------------------------------------------------------------------
+9.public class InfiniteForLoopUpdate {
+ public static void main(String[] args) {
+ for (int i = 0; i < 5; i += 2) {
+ System.out.println(i);
+ }
+ }
+}
+it doesnot print infinite loop. it prints the value of 0,2,4.
+-------------------------------------------------------------------10.public static void main(String[] args) {
+ int num = 10;
+ while (num = 10) {
+ System.out.println(num);
+ num--;
+ }
+ }
+}
+it shows the error  incompatible types: int cannot be converted to boolean
+ while (num = 10) {
+-------------------------------------------------------------------11.public class IncorrectLoopUpdate {
+ public static void main(String[] args) {
+ int i = 0;
+ while (i < 5) {
+ System.out.println(i);
+ i += 2; // Error: This may cause unexpected results in output
+ }
+ }
+} the output is 0,2,4.
+-------------------------------------------------------------------12.public class LoopVariableScope {
+ public static void main(String[] args) {
+ for (int i = 0; i < 5; i++) {
+ int x = i * 2;
+ }
+ System.out.println(x); // Error: 'x' is not accessible here
+ }
+}
+it shows the error  System.out.println(x);
+                    ^
+  symbol:   variable x
+  location: class Main
+1 error
