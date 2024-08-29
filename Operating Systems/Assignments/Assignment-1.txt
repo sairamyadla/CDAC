@@ -1,0 +1,231 @@
+Problem 1: Read the instructions carefully and answer accordingly. If there is any need to insert some data then do that as well. 
+
+a) Navigate and List:
+
+root@YADLA:~# pwd  //to show current directory
+/root
+root@YADLA:~# ls // list of contents
+abc.txt  abc.txt.save  snap  user
+root@YADLA:~# mkdir LinuxAssignment //creation of directory
+root@YADLA:~# ls
+LinuxAssignment  abc.txt  abc.txt.save  snap  user
+
+b) File Management:
+
+root@YADLA:~# cd LinuxAssignment //Inside the "LinuxAssignment" directory
+root@YADLA:~/LinuxAssignment# nano file1.txt
+root@YADLA:~/LinuxAssignment# cat file1.txt
+HIII
+Hello
+OPerating Systems
+Good Morning
+Good Evening
+Good afternoon
+CDAC
+MUMBAI
+Kharghar
+PG DAC
+
+c) Directory Management:
+root@YADLA:~/LinuxAssignment# mkdir docs
+root@YADLA:~/LinuxAssignment# ls
+docs  file1.txt
+
+d) Copy and Move Files:
+ cp file1.txt docs/file2.txt
+root@YADLA:~/LinuxAssignment/docs# cat file2.txt
+HIII
+Hello
+OPerating Systems
+Good Morning
+Good Evening
+Good afternoon
+CDAC
+MUMBAI
+Kharghar
+PG DAC
+
+e) Permissions and Ownership:
+root@YADLA:~/LinuxAssignment/docs# ls -l
+total 4
+-rw-r--r-- 1 root root 98 Aug 28 18:38 file2.txt
+root@YADLA:~/LinuxAssignment/docs# chmod u+x file2.txt
+root@YADLA:~/LinuxAssignment/docs# ls -l
+total 4
+-rwxr--r-- 1 root root 98 Aug 28 18:38 file2.txt
+root@YADLA:~/LinuxAssignment/docs# sudo chown $(whoami) file2.txt
+root@YADLA:~/LinuxAssignment/docs# ls -l
+total 4
+-rwxr--r-- 1 root root 98 Aug 28 18:38 file2.txt
+
+f) Final Checklist:
+root@YADLA:~/LinuxAssignment# ls
+docs  file1.txt
+root@YADLA:~/LinuxAssignment# cd docs
+root@YADLA:~/LinuxAssignment/docs# ls
+file2.txt
+
+g) File Searching:
+root@YADLA:~/LinuxAssignment# find . -type f -name "*.txt"
+./file1.txt
+./docs/file2.txt
+
+h) System date and time:
+root@YADLA:~/LinuxAssignment/docs# date
+Wed Aug 28 19:21:24 IST 2024
+
+i)Networking:
+root@YADLA:~/LinuxAssignment/docs# hostname -I
+172.26.6.84
+root@YADLA:~/LinuxAssignment/docs# ping 172.26.6.84
+PING 172.26.6.84 (172.26.6.84) 56(84) bytes of data.
+64 bytes from 172.26.6.84: icmp_seq=1 ttl=64 time=5.18 ms
+64 bytes from 172.26.6.84: icmp_seq=2 ttl=64 time=0.150 ms
+64 bytes from 172.26.6.84: icmp_seq=3 ttl=64 time=0.050 ms
+64 bytes from 172.26.6.84: icmp_seq=4 ttl=64 time=0.052 ms
+64 bytes from 172.26.6.84: icmp_seq=5 ttl=64 time=0.052 ms
+64 bytes from 172.26.6.84: icmp_seq=6 ttl=64 time=0.066 ms
+64 bytes from 172.26.6.84: icmp_seq=7 ttl=64 time=0.066 ms
+64 bytes from 172.26.6.84: icmp_seq=8 ttl=64 time=0.052 ms
+64 bytes from 172.26.6.84: icmp_seq=9 ttl=64 time=0.053 ms
+64 bytes from 172.26.6.84: icmp_seq=10 ttl=64 time=0.049 ms
+
+j) File Compression:
+
+root@YADLA:~/LinuxAssignment# zip -r docs.zip docs/
+  adding: docs/ (stored 0%)
+  adding: docs/file2.txt (deflated 16%)
+root@YADLA:~/LinuxAssignment# mkdir newdirec
+root@YADLA:~/LinuxAssignment# cd newdirec
+root@YADLA:~/LinuxAssignment/newdirec# cd ..
+root@YADLA:~/LinuxAssignment# unzip docs.zip -d newdirec
+Archive:  docs.zip
+   creating: newdirec/docs/
+  inflating: newdirec/docs/file2.txt
+
+k) File Editing:
+root@YADLA:~/LinuxAssignment# nano file1.txt
+root@YADLA:~/LinuxAssignment# cat file1.txt
+HIII
+Hello
+OPerating Systems
+Good Morning
+Good Evening
+Good afternoon
+CDAC
+MUMBAI
+Kharghar
+PG DAC
+root@YADLA:~/LinuxAssignment# sed -i 's/OPerating Systems/Module1/g' file1.txt
+root@YADLA:~/LinuxAssignment# cat file1.txt
+HIII
+Hello
+Module1
+Good Morning
+Good Evening
+Good afternoon
+CDAC
+MUMBAI
+Kharghar
+PG DAC
+
+Problem 2: Read the instructions carefully and answer accordingly. If there is any need to insert some data then do that as well. 
+
+a. Suppose you have a file named "data.txt" containing important information. Display the first 10 lines of this file to quickly glance at its contents using a command. 
+
+root@YADLA:~/LinuxAssignment# nano data.txt
+root@YADLA:~/LinuxAssignment# head data.txt
+Hii
+Hello
+PG DAC
+OS
+Linux
+Ubuntu
+CDAC
+Mumbai
+Kharghar
+PGDAC
+
+b. Now, to check the end of the file for any recent additions, display the last 5 lines of "data.txt" using another command. 
+
+root@YADLA:~/LinuxAssignment# tail -5 data.txt
+Ubuntu
+CDAC
+Mumbai
+Kharghar
+PGDAC
+
+c. In a file named "numbers.txt," there are a series of numbers. Display the first 15 lines of this file to analyze the initial data set. 
+
+root@YADLA:~/LinuxAssignment# nano numbers.txt
+root@YADLA:~/LinuxAssignment# head -15 numbers.txt
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+
+d. To focus on the last few numbers of the dataset, display the last 3 lines of "numbers.txt". 
+
+root@YADLA:~/LinuxAssignment# tail -3 numbers.txt
+15
+16
+17
+
+e.Imagine you have a file named "input.txt" with text content. Use a command to translate all lowercase letters to uppercase in "input.txt" and save the modified text in a new file named "output.txt."
+ 
+root@YADLA:~/LinuxAssignment# nano input.txt
+root@YADLA:~/LinuxAssignment# tr '[:lower:]' '[:upper:]' < input.txt > output.txt
+root@YADLA:~/LinuxAssignment# cat input.txt
+hii
+hello
+bye
+cdac
+root@YADLA:~/LinuxAssignment# cat output.txt
+HII
+HELLO
+BYE
+CDAC
+
+f. In a file named "duplicate.txt," there are several lines of text, some of which are duplicates. Use a command to display only the unique lines from "duplicate.txt".
+
+root@YADLA:~/LinuxAssignment# cat duplicates.txt
+hii
+hello
+hii
+hello
+bye
+hello
+bye
+root@YADLA:~/LinuxAssignment# sort duplicates.txt|uniq
+bye
+hello
+hii
+
+g. In a file named "fruit.txt," there is a list of fruits, but some fruits are repeated. Use a command to display each unique fruit along with the count of its occurrences in "fruit.txt." 
+
+root@YADLA:~/LinuxAssignment# cat fruit.txt
+apple
+orange
+grapes
+apple
+banana
+strawberry
+apple
+orange
+root@YADLA:~/LinuxAssignment# sort fruit.txt|uniq -c
+      3 apple
+      1 banana
+      1 grapes
+      2 orange
+      1 strawberry
