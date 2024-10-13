@@ -1,0 +1,20 @@
+Assignment-2
+
+1) Which field of the Customers table is the primary key?
+
+A Primary key,also called as primary keyword,is a coulumn in a relational database that has uniques values.
+
+In customers table the field which contains primary key is Cnum(which has uniques values).
+
+2) What is the 4th column of the Customers table?
+
+The 4th column in customers table is "Rating".
+ 
+3) What is another word for row? For column?
+
+In SQL the another word for row is tuple/record.
+	   another word for column is attribute/field.
+
+4) Why isn’t it possible to see the first five rows of a table?
+
+In RDBMS there is no possible to see first five records beacuse there is such thing as a first row or last row in a table. it is free to return data in any order.
