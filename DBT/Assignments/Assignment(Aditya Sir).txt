@@ -1,0 +1,466 @@
+Assignment(Aditya Sir)
+
+mysql> create table Departments(
+    -> deptid int(2) PRIMARY KEY,
+    -> deptname varchar(10) NOT NULL UNIQUE);
+Query OK, 0 rows affected, 1 warning (2.55 sec)
+
+mysql> CREATE TABLE employees (
+    ->     employee_id int PRIMARY KEY,
+    ->     first_name varchar(50) NOT NULL,
+    ->     last_name varchar(50) NOT NULL,
+    ->     email varchar(100) NOT NULL UNIQUE,
+    ->     hire_date date NOT NULL,
+    ->     salary varchar(10) NOT NULL,
+    ->     deptid int NOT NULL,
+    ->     FOREIGN KEY (deptid) REFERENCES departments(deptid) ON DELETE CASCADE
+    -> );
+
+mysql> create table Projects(
+    ->     projectid int(4) PRIMARY KEY,
+    ->     Projectname varchar(40) NOT NULL UNIQUE,
+    ->     startdate date NOT NULL,
+    ->     enddate date,
+    ->     deptid int(2) NOT NULL,
+    ->     FOREIGN KEY(deptid) REFERENCES Departments(deptid));
+Query OK, 0 rows affected, 2 warnings (0.62 sec)
+
+mysql> insert into employees(employee_id,first_name,last_name,email,hire_date,salary,deptid) values
+    -> (101,'Ravi','Sharma','ravi.sharma@specialforce.com','2017-05-15','55000',1),
+    -> (102,'Neha','Kapoor','neha.kapoor@specialforce.com','2019-03-23','48000',2),
+    -> (103,'Jyoti','Verma','jyoti.verma@specialforce.com','2020-11-02','60000',1),
+    -> (104,'Anil','Patil','anil.patil@specialforce.com','2018-09-18','70000',3),
+    -> (105,'Pooja','Singh','pooja.singh@specialforce.com','2021-06-10','40000',4),
+    -> (106,'Sanjay','Iyer','sanjay.iyer@specialforce.com','2018-01-22','75000',3),
+    -> (107,'Jatin','Reddy','jatin.reddy@specialforce.com','2021-12-12','85000',2),
+    -> (108,'Shreya','Mehta','shreya.mehta@specialforce.com','2022-04-19','30000',5),
+    -> (109,'Rajesh','Gupta','rajesh.gupta@specialforce.com','2020-08-11','90000',1),
+    -> (110,'Kavita','Nair','kavita.nair@specialforce.com','2021-02-07','50000',2);
+Query OK, 10 rows affected (0.11 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from employees;
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary | deptid |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+|         101 | Ravi       | Sharma    | ravi.sharma@specialforce.com  | 2017-05-15 | 55000  |      1 |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 48000  |      2 |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000  |      1 |
+|         104 | Anil       | Patil     | anil.patil@specialforce.com   | 2018-09-18 | 70000  |      3 |
+|         105 | Pooja      | Singh     | pooja.singh@specialforce.com  | 2021-06-10 | 40000  |      4 |
+|         106 | Sanjay     | Iyer      | sanjay.iyer@specialforce.com  | 2018-01-22 | 75000  |      3 |
+|         107 | Jatin      | Reddy     | jatin.reddy@specialforce.com  | 2021-12-12 | 85000  |      2 |
+|         108 | Shreya     | Mehta     | shreya.mehta@specialforce.com | 2022-04-19 | 30000  |      5 |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000  |      1 |
+|         110 | Kavita     | Nair      | kavita.nair@specialforce.com  | 2021-02-07 | 50000  |      2 |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+10 rows in set (0.00 sec)
+
+
+mysql> insert into departments(deptid,deptname) values
+    -> (1,'IT'),
+    -> (2,'HR'),
+    -> (3,'Sales'),
+    -> (4,'Finance'),
+    -> (5,'Marketing');
+Query OK, 5 rows affected (0.23 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from departments;
++--------+-----------+
+| deptid | deptname  |
++--------+-----------+
+|      4 | Finance   |
+|      2 | HR        |
+|      1 | IT        |
+|      5 | Marketing |
+|      3 | Sales     |
++--------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>  insert into Projects(projectid,projectname,startdate,enddate,deptid) values
+    -> (201,'Project Phoenix','2021-01-15','2022-07-30',1),
+    -> (202,'Client Onboarding','2020-06-20',NULL,3),
+    -> (203,'Financial Overhaul','2019-03-10','2021-12-15',4),
+    -> (204,'Marketing Revamp','2022-03-01',NULL,5),
+    -> (205,'Internal System Audit','2023-02-15',NULL,2);
+Query OK, 5 rows affected (0.30 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from projects;
++-----------+-----------------------+------------+------------+--------+
+| projectid | projectname           | startdate  | enddate    | deptid |
++-----------+-----------------------+------------+------------+--------+
+|       201 | Project Phoenix       | 2021-01-15 | 2022-07-30 |      1 |
+|       202 | Client Onboarding     | 2020-06-20 | NULL       |      3 |
+|       203 | Financial Overhaul    | 2019-03-10 | 2021-12-15 |      4 |
+|       204 | Marketing Revamp      | 2022-03-01 | NULL       |      5 |
+|       205 | Internal System Audit | 2023-02-15 | NULL       |      2 |
++-----------+-----------------------+------------+------------+--------+
+5 rows in set (0.00 sec)
+
+Query 1: Write a query to retrieve the first name, last name, and department name of all employees. If an employee does not belong to any department, the department name should be NULL. 
+
+mysql> select emp.first_name,emp.last_name,dept.deptname from employees emp
+    -> left join departments dept
+    -> on emp.deptid=dept.deptid;
++------------+-----------+-----------+
+| first_name | last_name | deptname  |
++------------+-----------+-----------+
+| Ravi       | Sharma    | IT        |
+| Neha       | Kapoor    | HR        |
+| Jyoti      | Verma     | IT        |
+| Anil       | Patil     | Sales     |
+| Pooja      | Singh     | Finance   |
+| Sanjay     | Iyer      | Sales     |
+| Jatin      | Reddy     | HR        |
+| Shreya     | Mehta     | Marketing |
+| Rajesh     | Gupta     | IT        |
+| Kavita     | Nair      | HR        |
++------------+-----------+-----------+
+10 rows in set (0.00 sec)
+
+Query 2: Write a query to find all employees in the IT department who earn more than ₹50,000. 
+
+mysql> select employee_id,first_name,last_name from employees where deptid = 1;
++-------------+------------+-----------+
+| employee_id | first_name | last_name |
++-------------+------------+-----------+
+|         101 | Ravi       | Sharma    |
+|         103 | Jyoti      | Verma     |
+|         109 | Rajesh     | Gupta     |
++-------------+------------+-----------+
+3 rows in set (0.05 sec)
+
+Query 3: Write a query to list the first name, last name, and email of all employees whose first name starts with 'J' and whose email contains specialforce.com.
+
+mysql>  select first_name,last_name,email from employees
+    -> where first_name like 'J%' and email like '%specialforce.com';
++------------+-----------+------------------------------+
+| first_name | last_name | email                        |
++------------+-----------+------------------------------+
+| Jyoti      | Verma     | jyoti.verma@specialforce.com |
+| Jatin      | Reddy     | jatin.reddy@specialforce.com |
++------------+-----------+------------------------------+
+2 rows in set (0.04 sec)
+
+Query 4: Write a query to find all the distinct department names in the Departments table. 
+
+mysql> select distinct deptname from departments;
++-----------+
+| deptname  |
++-----------+
+| Finance   |
+| HR        |
+| IT        |
+| Marketing |
+| Sales     |
++-----------+
+5 rows in set (0.04 sec)
+
+Query 5: Write a query to calculate the total salary expenditure of each department. 
+
+mysql> select dept.deptname , sum(emp.salary) from employees emp
+    -> join departments dept on emp.deptid=dept.deptid group by
+	dept.deptname;
++-----------+-----------------+
+| deptname  | sum(emp.salary) |
++-----------+-----------------+
+| Finance   |           40000 |
+| HR        |          183000 |
+| IT        |          205000 |
+| Marketing |           30000 |
+| Sales     |          145000 |
++-----------+-----------------+
+5 rows in set (0.14 sec)
+
+Query 6: Write a query to find the average salary of employees in the Finance department. 
+
+mysql> select avg(salary) from employees where deptid=4;
++-------------+
+| avg(salary) |
++-------------+
+|       40000 |
++-------------+
+1 row in set (0.00 sec)
+
+Query 7: Write a query to find the minimum and maximum salaries of employees in the Sales department. 
+
+mysql> select min(salary),max(salary) from employees where deptid=3;
++-------------+-------------+
+| min(salary) | max(salary) |
++-------------+-------------+
+| 70000       | 75000       |
++-------------+-------------+
+1 row in set (0.13 sec)
+
+Query 8: Write a query to count the number of employees in each department. 
+
+mysql> select d.deptname,count(e.employee_id) as emp_count fromdepartments d
+    -> left join employees e on d.deptid = e.deptid
+    -> group by d.deptname;
++-----------+-----------+
+| deptname  | emp_count |
++-----------+-----------+
+| Finance   |         1 |
+| HR        |         3 |
+| IT        |         3 |
+| Marketing |         1 |
+| Sales     |         2 |
++-----------+-----------+
+5 rows in set (0.00 sec)
+
+Query 9: Write a query to find all employees who were hired between January 1, 2018, and December 31, 2020. Sort the result by hire date in ascending order. 
+
++-------------+------------+-----------+-------------------------------+------------+--------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary |
++-------------+------------+-----------+-------------------------------+------------+--------+
+|         106 | Sanjay     | Iyer      | sanjay.iyer@specialforce.com  | 2018-01-22 | 75000  |
+|         104 | Anil       | Patil     | anil.patil@specialforce.com   | 2018-09-18 | 70000  |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 48000  |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000  |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000  |
++-------------+------------+-----------+-------------------------------+------------+--------+
+5 rows in set (0.01 sec)
+
+Query 10: Write a query to list all employees who do not have an email address. 
+
+mysql> select * from employees where email is NULL;
+Empty set (0.00 sec)
+
+Query 11: Write a query to find all employees who work in HR, Finance, or IT departments. 
+
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary | deptid |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+|         105 | Pooja      | Singh     | pooja.singh@specialforce.com  | 2021-06-10 | 40000  |      4 |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 48000  |      2 |
+|         107 | Jatin      | Reddy     | jatin.reddy@specialforce.com  | 2021-12-12 | 85000  |      2 |
+|         110 | Kavita     | Nair      | kavita.nair@specialforce.com  | 2021-02-07 | 50000  |      2 |
+|         101 | Ravi       | Sharma    | ravi.sharma@specialforce.com  | 2017-05-15 | 55000  |      1 |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000  |      1 |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000  |      1 |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+7 rows in set (0.00 sec)
+
+Query 12: Write a query to list the first name, last name, and salary of employees earning between ₹30,000 and ₹70,000. Sort the results by salary in descending order.
+
+mysql> select first_name,last_name,salary from employees where salary between '30000' and '70000' order by salary desc;
++------------+-----------+--------+
+| first_name | last_name | salary |
++------------+-----------+--------+
+| Anil       | Patil     | 70000  |
+| Jyoti      | Verma     | 60000  |
+| Ravi       | Sharma    | 55000  |
+| Kavita     | Nair      | 50000  |
+| Neha       | Kapoor    | 48000  |
+| Pooja      | Singh     | 40000  |
+| Shreya     | Mehta     | 30000  |
++------------+-----------+--------+
+7 rows in set (0.03 sec)
+
+Transaction Management Tasks: 
+
+Use transaction control statements to manage the salary updates as follows: 
+Task 1: Increase HR Salaries:
+Write a query to increase the salaries of all employees in the HR department by 5%. Start a transaction before applying the changes. 
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> update employees set salary = salary*1.05 where deptid = (select deptid from departments where deptname = 'HR');
+Query OK, 3 rows affected (0.35 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from employees;
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary | deptid |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+|         101 | Ravi       | Sharma    | ravi.sharma@specialforce.com  | 2017-05-15 | 55000  |      1 |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 50400  |      2 |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000  |      1 |
+|         104 | Anil       | Patil     | anil.patil@specialforce.com   | 2018-09-18 | 70000  |      3 |
+|         105 | Pooja      | Singh     | pooja.singh@specialforce.com  | 2021-06-10 | 40000  |      4 |
+|         106 | Sanjay     | Iyer      | sanjay.iyer@specialforce.com  | 2018-01-22 | 75000  |      3 |
+|         107 | Jatin      | Reddy     | jatin.reddy@specialforce.com  | 2021-12-12 | 89250  |      2 |
+|         108 | Shreya     | Mehta     | shreya.mehta@specialforce.com | 2022-04-19 | 30000  |      5 |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000  |      1 |
+|         110 | Kavita     | Nair      | kavita.nair@specialforce.com  | 2021-02-07 | 52500  |      2 |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+10 rows in set (0.00 sec)
+
+Task 2: Savepoint Before Sales Increase:
+Set a savepoint before increasing the salaries of employees in the Sales department by 3%. 
+
+
+mysql> savepoint before_sales_increase;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> update employees set salary = salary*1.03 where deptid = (select deptid from departments where deptname = 'sales');
+Query OK, 2 rows affected (0.11 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from employees;
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary | deptid |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+|         101 | Ravi       | Sharma    | ravi.sharma@specialforce.com  | 2017-05-15 | 55000  |      1 |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 50400  |      2 |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000  |      1 |
+|         104 | Anil       | Patil     | anil.patil@specialforce.com   | 2018-09-18 | 72100  |      3 |
+|         105 | Pooja      | Singh     | pooja.singh@specialforce.com  | 2021-06-10 | 40000  |      4 |
+|         106 | Sanjay     | Iyer      | sanjay.iyer@specialforce.com  | 2018-01-22 | 77250  |      3 |
+|         107 | Jatin      | Reddy     | jatin.reddy@specialforce.com  | 2021-12-12 | 89250  |      2 |
+|         108 | Shreya     | Mehta     | shreya.mehta@specialforce.com | 2022-04-19 | 30000  |      5 |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000  |      1 |
+|         110 | Kavita     | Nair      | kavita.nair@specialforce.com  | 2021-02-07 | 52500  |      2 |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+10 rows in set (0.10 sec)
+
+Task 3: Rollback Sales Salary Increase:
+Rollback to the savepoint created before the Sales salary increase. 
+
+mysql> rollback to before_sales_increase;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> select * from employees;
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary | deptid |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+|         101 | Ravi       | Sharma    | ravi.sharma@specialforce.com  | 2017-05-15 | 55000  |      1 |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 50400  |      2 |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000  |      1 |
+|         104 | Anil       | Patil     | anil.patil@specialforce.com   | 2018-09-18 | 70000  |      3 |
+|         105 | Pooja      | Singh     | pooja.singh@specialforce.com  | 2021-06-10 | 40000  |      4 |
+|         106 | Sanjay     | Iyer      | sanjay.iyer@specialforce.com  | 2018-01-22 | 75000  |      3 |
+|         107 | Jatin      | Reddy     | jatin.reddy@specialforce.com  | 2021-12-12 | 89250  |      2 |
+|         108 | Shreya     | Mehta     | shreya.mehta@specialforce.com | 2022-04-19 | 30000  |      5 |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000  |      1 |
+|         110 | Kavita     | Nair      | kavita.nair@specialforce.com  | 2021-02-07 | 52500  |      2 |
++-------------+------------+-----------+-------------------------------+------------+--------+--------+
+10 rows in set (0.00 sec)
+
+Task 4: Commit the Transaction:
+After rolling back the Sales increase, commit the changes made to the HR department salaries. 
+
+mysql> commit;
+Query OK, 0 rows affected (0.25 sec)
+
+Query 13: Write a query to join the Employees and Departments tables to list employees and their department names. Make sure all employees are included, even if they don’t belong to any 
+department.
+ 
+mysql> select e.first_name,e.last_name,d.deptname from employees e
+    -> left join departments d on e.deptid = d.deptid;
++------------+-----------+-----------+
+| first_name | last_name | deptname  |
++------------+-----------+-----------+
+| Ravi       | Sharma    | IT        |
+| Neha       | Kapoor    | HR        |
+| Jyoti      | Verma     | IT        |
+| Anil       | Patil     | Sales     |
+| Pooja      | Singh     | Finance   |
+| Sanjay     | Iyer      | Sales     |
+| Jatin      | Reddy     | HR        |
+| Shreya     | Mehta     | Marketing |
+| Rajesh     | Gupta     | IT        |
+| Kavita     | Nair      | HR        |
++------------+-----------+-----------+
+10 rows in set (0.00 sec)
+
+Query 14: Write a query to list employees who are working on projects that started after January 1, 2023. 
+
+mysql> select first_name,last_name from employees
+    -> join projects on employees.deptid=projects.deptid where
+    -> projects.startdate>'2023-01-01';
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| Neha       | Kapoor    |
+| Jatin      | Reddy     |
+| Kavita     | Nair      |
++------------+-----------+
+3 rows in set (0.11 sec)
+
+Query 15: Write a query to list all departments, even those without any employees assigned. 
+
+mysql> select d.deptname from departments d
+    -> left join employees e on d.deptid = e.deptid group by d.deptname;
++-----------+
+| deptname  |
++-----------+
+| Finance   |
+| HR        |
+| IT        |
+| Marketing |
+| Sales     |
++-----------+
+5 rows in set (0.00 sec)
+
+Query 16: Write a query to find the employee with the highest salary in each department. 
+
+mysql> select first_name,last_name,salary,deptid
+    -> from employees e
+    -> where salary=(select max(salary) from employees e1
+    -> where e.deptid=e1.deptid);
++------------+-----------+--------+--------+
+| first_name | last_name | salary | deptid |
++------------+-----------+--------+--------+
+| Pooja      | Singh     | 40000  |      4 |
+| Sanjay     | Iyer      | 75000  |      3 |
+| Jatin      | Reddy     | 89250  |      2 |
+| Shreya     | Mehta     | 30000  |      5 |
+| Rajesh     | Gupta     | 90000  |      1 |
++------------+-----------+--------+--------+
+5 rows in set (0.05 sec)
+
+Query 17: Write a query to remove all data from the Employees table but keep the structure intact. 
+
+mysql> truncate table employees;
+
+Query 18: Write a query to drop the Projects table from the database. 
+
+mysql> drop table projects;
+
+Query 19: SpecialForce Private Limited realized they need to store the phone numbers of employees. Write a query to add a new column phone_number (VARCHAR(15)) to the Employees table using the ALTER statement.
+
+mysql> alter table employees add column phone_number varchar(15);
+Query OK, 0 rows affected (2.44 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+ 
+Query 20: The company also decided to track the budget for each project. Write a query to add a column budget (DECIMAL(10,2)) to the Projects table.
+
+mysql> alter table projects add column budget decimal(10,2);
+Query OK, 0 rows affected (0.67 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query 21: Write a query to find the 2nd largest salary from the Employees table using: 
+ A subquery. 
+ The LIMIT clause. 
+
+mysql> select first_name,last_name,salary from employees order by salary desc limit 1,1;
++------------+-----------+--------+
+| first_name | last_name | salary |
++------------+-----------+--------+
+| Jatin      | Reddy     | 89250  |
++------------+-----------+--------+
+1 row in set (0.03 sec)
+
+Query 22: Write a query to find the 3rd largest salary from the Employees table using: 
+ A subquery. 
+ The LIMIT clause. 
+
+mysql> select max(salary) from employees where salary < (select max(salary) from employees where salary <(select max(salary) from employees));
++-------------+
+| max(salary) |
++-------------+
+| 75000       |
++-------------+
+1 row in set (0.00 sec)
+
+Query 23: Write a query to drop the Projects table. 
+
+mysql> drop table Projects;
+
+Query 24: Write a query to truncate the Employees table.
+
+mysql> truncate table Employees;
