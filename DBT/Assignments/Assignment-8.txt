@@ -1,0 +1,65 @@
+Assignment-8
+
+1) Assume each salesperson has a 12% commission. Write a query on the orders table that will produce the order number, the salesperson number, and the amount of the salesperson’s commission for that order.
+
+mysql> select Onum,Snum,Amt*0.12 as Comm from orders;
++------+------+---------+
+| Onum | Snum | Comm    |
++------+------+---------+
+| 3001 | 1007 |    2.24 |
+| 3003 | 1001 |   92.06 |
+| 3002 | 1004 |  228.01 |
+| 3005 | 1002 |  619.25 |
+| 3006 | 1007 |  131.78 |
+| 3009 | 1003 |  205.59 |
+| 3007 | 1002 |    9.09 |
+| 3008 | 1001 |  566.76 |
+| 3010 | 1002 |  157.19 |
+| 3011 | 1001 | 1187.03 |
++------+------+---------+
+10 rows in set (0.07 sec)
+
+
+2) Write a query on the Customers table that will find the highest rating in each city. Put the output in this form:
+ For the city (city), the highest rating is : (rating).
+
+mysql> select city,max(Rating) from customers group by City;
++----------+-------------+
+| city     | max(Rating) |
++----------+-------------+
+| London   |         100 |
+| Rome     |         200 |
+| San Jose |         300 |
+| Berlin   |         300 |
++----------+-------------+
+4 rows in set (0.14 sec)
+
+3) Write a query that lists customers in descending order of rating. Output the rating field first, followed by the customer’s name and number.
+
+mysql> select Rating,Cnum,Cname from customers
+    -> order by rating desc;
++--------+------+----------+
+| Rating | Cnum | Cname    |
++--------+------+----------+
+|    300 | 2004 | Grass    |
+|    300 | 2008 | Cisneros |
+|    200 | 2002 | Giovanni |
+|    200 | 2003 | Liu      |
+|    100 | 2001 | Hoffman  |
+|    100 | 2006 | Clemens  |
+|    100 | 2007 | Pereira  |
++--------+------+----------+
+7 rows in set (0.01 sec)
+
+4) Write a query that totals the orders for each day and places the results in descending order.
+
+mysql> select Odate,sum(Amt) from orders group by Odate;
++------------+----------+
+| Odate      | sum(Amt) |
++------------+----------+
+| 1990-10-03 |  8944.59 |
+| 1990-10-04 |  1788.98 |
+| 1990-10-05 |  4723.00 |
+| 1990-10-06 | 11201.83 |
++------------+----------+
+4 rows in set (0.02 sec)

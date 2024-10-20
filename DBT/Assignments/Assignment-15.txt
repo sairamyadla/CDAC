@@ -1,0 +1,36 @@
+Assignment-15
+
+1) Assume there is a table called Multicust, with all of the same column definitions as Salespeople. Write a command that inserts all salespeople with more than one customer into this table.
+
+mysql> INSERT INTO Multicust (Snum, Sname, City, Comm)
+    -> SELECT s.Snum, s.Sname, s.City, s.Comm
+    -> FROM salespeople s
+    -> WHERE s.Snum IN (
+    ->     SELECT Snum
+    ->     FROM customers
+    ->     GROUP BY Snum
+    ->     HAVING COUNT(Cnum) > 1
+    -> );
+ERROR 1146 (42S02): Table 'cdacmumbai.multicust' doesn't exist
+
+2) Write a command that deletes all customers with no current orders.
+
+mysql> DELETE FROM customers
+    -> WHERE Cnum NOT IN (
+    ->     SELECT Cnum
+    ->     FROM orders
+    -> );
+Query OK, 1 row affected (0.08 sec)
+
+3) Write a command that increases by twenty percent the commissions of all salespeople with total orders above Rs. 3,000.
+
+mysql> UPDATE salespeople
+    -> SET Comm = Comm * 1.20
+    -> WHERE Snum IN (
+    ->     SELECT Snum
+    ->     FROM orders
+    ->     GROUP BY Snum
+    ->     HAVING SUM(Amt) > 3000
+    -> );
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
