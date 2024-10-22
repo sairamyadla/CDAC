@@ -1,0 +1,618 @@
+Assignment-2(Aditya Sir)
+
+mysql> CREATE DATABASE RailwayManagementDB;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE RailwayManagementDB;
+Database changed
+mysql> CREATE TABLE Trains (
+    ->   TrainID INT PRIMARY KEY,
+    ->   TrainName VARCHAR(100),
+    ->   TrainType VARCHAR(50),
+    ->   TotalSeats INT
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE Routes (
+    ->   RouteID INT PRIMARY KEY,
+    ->   StartStation VARCHAR(100),
+    ->   EndStation VARCHAR(100),
+    ->   Distance INT
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE Schedules (
+    ->   ScheduleID INT PRIMARY KEY,
+    ->   TrainID INT,
+    ->   RouteID INT,
+    ->   DepartureTime DATETIME,
+    ->   ArrivalTime DATETIME
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE Passengers (
+    ->   PassengerID INT PRIMARY KEY,
+    ->   FirstName VARCHAR(100),
+    ->   LastName VARCHAR(100),
+    ->   Age INT,
+    ->   Email VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE Bookings (
+    ->   BookingID INT PRIMARY KEY,
+    ->   PassengerID INT,
+    ->   ScheduleID INT,
+    ->   BookingDate DATE,
+    ->   SeatNumber INT
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> -- Insert into Trains
+mysql> INSERT INTO Trains VALUES (1, 'Rajdhani Express', 'Express', 300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Trains VALUES (2, 'Tejas Express', 'Superfast', 200);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Trains VALUES (3, 'Shatabdi Express', 'Passenger', 250);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Trains VALUES (4, 'Duronto Express', 'Superfast', 150);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Trains VALUES (5, 'Garib Rath', 'Express', 350);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> -- Insert into Routes
+mysql> INSERT INTO Routes VALUES (1, 'Delhi', 'Mumbai', 1400);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Routes VALUES (2, 'Kolkata', 'Chennai', 1650);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Routes VALUES (3, 'Jaipur', 'Ahmedabad', 650);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> -- Insert into Schedules
+mysql> INSERT INTO Schedules VALUES (1, 1, 1, '2024-10-20 09:00:00', '2024-10-20 21:00:00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Schedules VALUES (2, 2, 2, '2024-10-21 08:30:00', '2024-10-21 22:00:00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Schedules VALUES (3, 3, 3, '2024-10-22 06:00:00', '2024-10-22 14:00:00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Schedules VALUES (4, 4, 1, '2024-10-23 10:00:00', '2024-10-23 22:00:00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Schedules VALUES (5, 5, 2, '2024-10-24 07:00:00', '2024-10-24 21:00:00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> -- Insert into Passengers
+mysql> INSERT INTO Passengers VALUES (1, 'Rajesh', 'Sharma', 45, 'rajesh.sharma@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (2, 'Priya', 'Mehra', 32, 'priya.mehra@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (3, 'Ankit', 'Verma', 29, 'ankit.verma@specialforce.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Passengers VALUES (4, 'Kavita', 'Gupta', 40, 'kavita.gupta@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (5, 'Arun', 'Patel', 50, 'arun.patel@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (6, 'Neha', 'Joshi', 27, 'neha.joshi@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (7, 'Suresh', 'Nair', 33, 'suresh.nair@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (8, 'Pooja', 'Reddy', 36, 'pooja.reddy@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (9, 'Vikram', 'Singh', 42, 'vikram.singh@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Passengers VALUES (10, 'Aarti', 'Desai', 25, 'aarti.desai@specialforce.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> -- Insert into Bookings
+mysql> INSERT INTO Bookings VALUES (1, 1, 1, '2024-10-10', 12);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Bookings VALUES (2, 2, 1, '2024-10-11', 34);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Bookings VALUES (3, 3, 2, '2024-10-12', 56);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Bookings VALUES (4, 4, 3, '2024-10-13', 18);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Bookings VALUES (5, 5, 4, '2024-10-14', 22);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Select * from Bookings;
++-----------+-------------+------------+-------------+------------+
+| BookingID | PassengerID | ScheduleID | BookingDate | SeatNumber |
++-----------+-------------+------------+-------------+------------+
+|         1 |           1 |          1 | 2024-10-10  |         12 |
+|         2 |           2 |          1 | 2024-10-11  |         34 |
+|         3 |           3 |          2 | 2024-10-12  |         56 |
+|         4 |           4 |          3 | 2024-10-13  |         18 |
+|         5 |           5 |          4 | 2024-10-14  |         22 |
++-----------+-------------+------------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Select * from Passengers;
++-------------+-----------+----------+------+--------------------------------+
+| PassengerID | FirstName | LastName | Age  | Email
+ |
++-------------+-----------+----------+------+--------------------------------+
+|           1 | Rajesh    | Sharma   |   45 | rajesh.sharma@specialforce.com |
+|           2 | Priya     | Mehra    |   32 | priya.mehra@specialforce.com |
+|           3 | Ankit     | Verma    |   29 | ankit.verma@specialforce.com |
+|           4 | Kavita    | Gupta    |   40 | kavita.gupta@specialforce.com |
+|           5 | Arun      | Patel    |   50 | arun.patel@specialforce.com |
+|           6 | Neha      | Joshi    |   27 | neha.joshi@specialforce.com |
+|           7 | Suresh    | Nair     |   33 | suresh.nair@specialforce.com |
+|           8 | Pooja     | Reddy    |   36 | pooja.reddy@specialforce.com |
+|           9 | Vikram    | Singh    |   42 | vikram.singh@specialforce.com |
+|          10 | Aarti     | Desai    |   25 | aarti.desai@specialforce.com |
++-------------+-----------+----------+------+--------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> Select * Routes;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Routes' at line 1
+mysql> Select * from Routes;
++---------+--------------+------------+----------+
+| RouteID | StartStation | EndStation | Distance |
++---------+--------------+------------+----------+
+|       1 | Delhi        | Mumbai     |     1400 |
+|       2 | Kolkata      | Chennai    |     1650 |
+|       3 | Jaipur       | Ahmedabad  |      650 |
++---------+--------------+------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> Select * from Trains;
++---------+------------------+-----------+------------+
+| TrainID | TrainName        | TrainType | TotalSeats |
++---------+------------------+-----------+------------+
+|       1 | Rajdhani Express | Express   |        300 |
+|       2 | Tejas Express    | Superfast |        200 |
+|       3 | Shatabdi Express | Passenger |        250 |
+|       4 | Duronto Express  | Superfast |        150 |
+|       5 | Garib Rath       | Express   |        350 |
++---------+------------------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Schedules ADD CONSTRAINT fk_train FOREIGN KEY (TrainID) REFERENCES Trains(TrainID);
+Query OK, 5 rows affected (0.07 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Schedules ADD CONSTRAINT fk_route FOREIGN KEY (RouteID) REFERENCES Routes(RouteID);
+Query OK, 5 rows affected (0.09 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Bookings ADD CONSTRAINT fk_passenger FOREIGN KEY (PassengerID) REFERENCES Passengers(PassengerID);
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Bookings ADD CONSTRAINT fk_schedule FOREIGN KEY (ScheduleID) REFERENCES Schedules(ScheduleID);
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> Select * from Trains;
++---------+------------------+-----------+------------+
+| TrainID | TrainName        | TrainType | TotalSeats |
++---------+------------------+-----------+------------+
+|       1 | Rajdhani Express | Express   |        300 |
+|       2 | Tejas Express    | Superfast |        200 |
+|       3 | Shatabdi Express | Passenger |        250 |
+|       4 | Duronto Express  | Superfast |        150 |
+|       5 | Garib Rath       | Express   |        350 |
++---------+------------------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Select * from Passengers;
++-------------+-----------+----------+------+--------------------------------+
+| PassengerID | FirstName | LastName | Age  | Email
+ |
++-------------+-----------+----------+------+--------------------------------+
+|           1 | Rajesh    | Sharma   |   45 | rajesh.sharma@specialforce.com |
+|           2 | Priya     | Mehra    |   32 | priya.mehra@specialforce.com |
+|           3 | Ankit     | Verma    |   29 | ankit.verma@specialforce.com |
+|           4 | Kavita    | Gupta    |   40 | kavita.gupta@specialforce.com |
+|           5 | Arun      | Patel    |   50 | arun.patel@specialforce.com |
+|           6 | Neha      | Joshi    |   27 | neha.joshi@specialforce.com |
+|           7 | Suresh    | Nair     |   33 | suresh.nair@specialforce.com |
+|           8 | Pooja     | Reddy    |   36 | pooja.reddy@specialforce.com |
+|           9 | Vikram    | Singh    |   42 | vikram.singh@specialforce.com |
+|          10 | Aarti     | Desai    |   25 | aarti.desai@specialforce.com |
++-------------+-----------+----------+------+--------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> Select * from Bookings;
++-----------+-------------+------------+-------------+------------+
+| BookingID | PassengerID | ScheduleID | BookingDate | SeatNumber |
++-----------+-------------+------------+-------------+------------+
+|         1 |           1 |          1 | 2024-10-10  |         12 |
+|         2 |           2 |          1 | 2024-10-11  |         34 |
+|         3 |           3 |          2 | 2024-10-12  |         56 |
+|         4 |           4 |          3 | 2024-10-13  |         18 |
+|         5 |           5 |          4 | 2024-10-14  |         22 |
++-----------+-------------+------------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT T.TrainName, R.StartStation, R.EndStation, S.DepartureTime, S.ArrivalTime
+    -> FROM Trains T
+    -> INNER JOIN Schedules S ON T.TrainID = S.TrainID
+    -> INNER JOIN Routes R ON S.RouteID = R.RouteID;
++------------------+--------------+------------+---------------------+---------------------+
+| TrainName        | StartStation | EndStation | DepartureTime       | ArrivalTime         |
++------------------+--------------+------------+---------------------+---------------------+
+| Rajdhani Express | Delhi        | Mumbai     | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |
+| Duronto Express  | Delhi        | Mumbai     | 2024-10-23 10:00:00 | 2024-10-23 22:00:00 |
+| Tejas Express    | Kolkata      | Chennai    | 2024-10-21 08:30:00 | 2024-10-21 22:00:00 |
+| Garib Rath       | Kolkata      | Chennai    | 2024-10-24 07:00:00 | 2024-10-24 21:00:00 |
+| Shatabdi Express | Jaipur       | Ahmedabad  | 2024-10-22 06:00:00 | 2024-10-22 14:00:00 |
++------------------+--------------+------------+---------------------+---------------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT T.TrainName
+    -> FROM Trains T
+    -> LEFT JOIN Schedules S ON T.TrainID = S.TrainID
+    -> LEFT JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    -> WHERE B.BookingID IS NULL;
++------------+
+| TrainName  |
++------------+
+| Garib Rath |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT P.FirstName, P.LastName, P.Email
+    -> FROM Passengers P
+    -> RIGHT JOIN Bookings B ON P.PassengerID = B.PassengerID
+    -> WHERE B.ScheduleID IN (SELECT ScheduleID FROM Schedules S INNER JOINRoutes R ON S.RouteID = R.RouteID WHERE R.Distance > 500);
++-----------+----------+--------------------------------+
+| FirstName | LastName | Email                          |
++-----------+----------+--------------------------------+
+| Rajesh    | Sharma   | rajesh.sharma@specialforce.com |
+| Priya     | Mehra    | priya.mehra@specialforce.com   |
+| Arun      | Patel    | arun.patel@specialforce.com    |
+| Ankit     | Verma    | ankit.verma@specialforce.com   |
+| Kavita    | Gupta    | kavita.gupta@specialforce.com  |
++-----------+----------+--------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT T.TrainName, S.DepartureTime, S.ArrivalTime, B.BookingID
+    -> FROM Schedules S
+    -> LEFT JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    -> LEFT JOIN Trains T ON S.TrainID = T.TrainID;
++------------------+---------------------+---------------------+-----------+
+| TrainName        | DepartureTime       | ArrivalTime         | BookingID |
++------------------+---------------------+---------------------+-----------+
+| Rajdhani Express | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |         1 |
+| Rajdhani Express | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |         2 |
+| Tejas Express    | 2024-10-21 08:30:00 | 2024-10-21 22:00:00 |         3 |
+| Shatabdi Express | 2024-10-22 06:00:00 | 2024-10-22 14:00:00 |         4 |
+| Duronto Express  | 2024-10-23 10:00:00 | 2024-10-23 22:00:00 |         5 |
+| Garib Rath       | 2024-10-24 07:00:00 | 2024-10-24 21:00:00 |      NULL |
++------------------+---------------------+---------------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT T.TrainName, S.DepartureTime, S.ArrivalTime, B.BookingID
+    -> FROM Schedules S
+    -> LEFT JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    -> LEFT JOIN Trains T ON S.TrainID = T.TrainID;
++------------------+---------------------+---------------------+-----------+
+| TrainName        | DepartureTime       | ArrivalTime         | BookingID |
++------------------+---------------------+---------------------+-----------+
+| Rajdhani Express | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |         1 |
+| Rajdhani Express | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |         2 |
+| Tejas Express    | 2024-10-21 08:30:00 | 2024-10-21 22:00:00 |         3 |
+| Shatabdi Express | 2024-10-22 06:00:00 | 2024-10-22 14:00:00 |         4 |
+| Duronto Express  | 2024-10-23 10:00:00 | 2024-10-23 22:00:00 |         5 |
+| Garib Rath       | 2024-10-24 07:00:00 | 2024-10-24 21:00:00 |      NULL |
++------------------+---------------------+---------------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT R.RouteID, R.StartStation, R.EndStation, COUNT(B.PassengerID)AS TotalPassengers
+    -> FROM Routes R
+    -> INNER JOIN Schedules S ON R.RouteID = S.RouteID
+    -> INNER JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    -> GROUP BY R.RouteID, R.StartStation, R.EndStation;
++---------+--------------+------------+-----------------+
+| RouteID | StartStation | EndStation | TotalPassengers |
++---------+--------------+------------+-----------------+
+|       1 | Delhi        | Mumbai     |               3 |
+|       2 | Kolkata      | Chennai    |               1 |
+|       3 | Jaipur       | Ahmedabad  |               1 |
++---------+--------------+------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT T.TrainID, T.TrainName, AVG(PassengerCount) AS AvgPassengers
+    -> FROM (
+    ->     SELECT S.TrainID, COUNT(B.BookingID) AS PassengerCount
+    ->     FROM Schedules S
+    ->     LEFT JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    ->     GROUP BY S.TrainID
+    -> ) AS TrainPassengerCounts
+    -> INNER JOIN Trains T ON TrainPassengerCounts.TrainID = T.TrainID
+    -> GROUP BY T.TrainID, T.TrainName;
++---------+------------------+---------------+
+| TrainID | TrainName        | AvgPassengers |
++---------+------------------+---------------+
+|       1 | Rajdhani Express |        2.0000 |
+|       2 | Tejas Express    |        1.0000 |
+|       3 | Shatabdi Express |        1.0000 |
+|       4 | Duronto Express  |        1.0000 |
+|       5 | Garib Rath       |        0.0000 |
++---------+------------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT T.TrainID, T.TrainName, COUNT(B.BookingID) AS TotalBookings
+    -> FROM Trains T
+    -> INNER JOIN Schedules S ON T.TrainID = S.TrainID
+    -> INNER JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    -> GROUP BY T.TrainID, T.TrainName
+    -> ORDER BY TotalBookings DESC
+    -> LIMIT 1;
++---------+------------------+---------------+
+| TrainID | TrainName        | TotalBookings |
++---------+------------------+---------------+
+|       1 | Rajdhani Express |             2 |
++---------+------------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT R.RouteID, R.StartStation, R.EndStation, COUNT(B.SeatNumber) AS TotalSeatsBooked
+    -> FROM Routes R
+    -> INNER JOIN Schedules S ON R.RouteID = S.RouteID
+    -> INNER JOIN Bookings B ON S.ScheduleID = B.ScheduleID
+    -> WHERE B.BookingDate BETWEEN '2023-01-01' AND '2023-12-31'
+    -> GROUP BY R.RouteID, R.StartStation, R.EndStation;
+Empty set (0.00 sec)
+
+mysql> SELECT B.BookingID, P.FirstName, P.LastName, P.Age, S.DepartureTime
+    -> FROM Bookings B
+    -> INNER JOIN Passengers P ON B.PassengerID = P.PassengerID
+    -> INNER JOIN Schedules S ON B.ScheduleID = S.ScheduleID
+    -> WHERE P.Age > 60;
+Empty set (0.00 sec)
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE UpdateAvailableSeats(IN p_ScheduleID INT, IN p_SeatsBooked INT)
+    -> BEGIN
+    ->     UPDATE Schedules
+    ->     SET AvailableSeats = AvailableSeats - p_SeatsBooked
+    ->     WHERE ScheduleID = p_ScheduleID;
+    -> END //
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DELIMITER ;
+
+mysql> DELIMITER //
+mysql> CREATE FUNCTION CalculateTravelTime(p_ScheduleID INT)
+    -> RETURNS DECIMAL(5,2)
+    -> DETERMINISTIC
+    -> BEGIN
+    ->     DECLARE travelTime DECIMAL(5,2);
+    ->     SELECT TIMESTAMPDIFF(HOUR, DepartureTime, ArrivalTime) INTO travelTime
+    ->     FROM Schedules
+    ->     WHERE ScheduleID = p_ScheduleID;
+    ->     RETURN travelTime;
+    -> END //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql> SELECT CalculateTravelTime(1); -- Example: ScheduleID 1
++------------------------+
+| CalculateTravelTime(1) |
++------------------------+
+|                  12.00 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE VIEW PassengerBookingsView AS
+    -> SELECT P.PassengerID, P.FirstName, P.LastName, B.BookingID, T.TrainName, S.DepartureTime, S.ArrivalTime
+    -> FROM Passengers P
+    -> INNER JOIN Bookings B ON P.PassengerID = B.PassengerID
+    -> INNER JOIN Schedules S ON B.ScheduleID = S.ScheduleID
+    -> INNER JOIN Trains T ON S.TrainID = T.TrainID;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM PassengerBookingsView;
++-------------+-----------+----------+-----------+------------------+---------------------+---------------------+
+| PassengerID | FirstName | LastName | BookingID | TrainName        | DepartureTime       | ArrivalTime         |
++-------------+-----------+----------+-----------+------------------+---------------------+---------------------+
+|           1 | Rajesh    | Sharma   |         1 | Rajdhani Express | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |
+|           2 | Priya     | Mehra    |         2 | Rajdhani Express | 2024-10-20 09:00:00 | 2024-10-20 21:00:00 |
+|           3 | Ankit     | Verma    |         3 | Tejas Express    | 2024-10-21 08:30:00 | 2024-10-21 22:00:00 |
+|           4 | Kavita    | Gupta    |         4 | Shatabdi Express | 2024-10-22 06:00:00 | 2024-10-22 14:00:00 |
+|           5 | Arun      | Patel    |         5 | Duronto Express  | 2024-10-23 10:00:00 | 2024-10-23 22:00:00 |
++-------------+-----------+----------+-----------+------------------+---------------------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE INDEX idx_booking_date ON Bookings (BookingDate);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TEMPORARY TABLE TempTrainSchedule AS
+    -> SELECT *
+    -> FROM Schedules
+    -> WHERE DATE(DepartureTime) = '2023-10-15';
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- Query the temporary table
+mysql> SELECT * FROM TempTrainSchedule;
+Empty set (0.00 sec)
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE ListFrequentPassengers()
+    -> BEGIN
+    ->     DECLARE done INT DEFAULT 0;
+    ->     DECLARE p_FirstName VARCHAR(50);
+    ->     DECLARE p_LastName VARCHAR(50);
+    ->
+    ->     DECLARE cur CURSOR FOR
+    ->     SELECT P.FirstName, P.LastName
+    ->     FROM Passengers P
+    ->     JOIN Bookings B ON P.PassengerID = B.PassengerID
+    ->     GROUP BY P.PassengerID
+    ->     HAVING COUNT(B.BookingID) > 5;
+    ->
+    ->     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+    ->
+    ->     OPEN cur;
+    ->
+    ->     read_loop: LOOP
+    ->         FETCH cur INTO p_FirstName, p_LastName;
+    ->         IF done THEN
+    ->             LEAVE read_loop;
+    ->         END IF;
+    ->         -- You can add actions here, for example printing to the console/log
+    ->         SELECT p_FirstName, p_LastName;
+    ->     END LOOP;
+    ->
+    ->     CLOSE cur;
+    -> END //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql> CALL ListFrequentPassengers();
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> START TRANSACTION;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> -- Create a savepoint before deleting
+mysql> SAVEPOINT beforeDelete;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> -- Deleting booking record (example)
+mysql> DELETE FROM Bookings WHERE BookingID = 10;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> -- If error occurs, rollback to savepoint
+mysql> -- ROLLBACK TO SAVEPOINT beforeDelete;
+mysql>
+mysql> -- Commit transaction only after successful operations
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELIMITER //
+mysql> CREATE TRIGGER AssignSeatNumber
+    -> BEFORE INSERT ON Bookings
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     DECLARE nextSeat INT;
+    ->     SELECT IFNULL(MAX(SeatNumber), 0) + 1 INTO nextSeat
+    ->     FROM Bookings
+    ->     WHERE ScheduleID = NEW.ScheduleID;
+    ->
+    ->     SET NEW.SeatNumber = nextSeat;
+    -> END //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql> DELIMITER //
+mysql> CREATE TRIGGER UpdateSeatsAfterBooking
+    -> AFTER INSERT ON Bookings
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     UPDATE Schedules
+    ->     SET AvailableSeats = AvailableSeats - 1
+    ->     WHERE ScheduleID = NEW.ScheduleID;
+    -> END //
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DELIMITER ;
+mysql> SELECT P.FirstName, P.LastName
+    -> FROM Passengers P
+    -> JOIN Bookings B ON P.PassengerID = B.PassengerID
+    -> JOIN Schedules S ON B.ScheduleID = S.ScheduleID
+    -> WHERE S.RouteID = 1
+    ->
+    -> UNION
+    ->
+    -> SELECT P.FirstName, P.LastName
+    -> FROM Passengers P
+    -> JOIN Bookings B ON P.PassengerID = B.PassengerID
+    -> JOIN Schedules S ON B.ScheduleID = S.ScheduleID
+    -> WHERE S.RouteID = 2;
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
+| Rajesh    | Sharma   |
+| Priya     | Mehra    |
+| Arun      | Patel    |
+| Ankit     | Verma    |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Bookings WHERE BookingDate = '2023-01-01'
+    -> UNION ALL
+    -> SELECT * FROM Bookings WHERE BookingDate = '2023-02-01';
+Empty set (0.00 sec)
+
+mysql> CREATE TABLE OldPassengers LIKE Passengers;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE ArchivedBookings AS
+    -> SELECT * FROM Bookings;
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> Select * from OldPassengers;
+Empty set (0.00 sec)
+
+mysql> Select * from    ArchivedBookings;
++-----------+-------------+------------+-------------+------------+
+| BookingID | PassengerID | ScheduleID | BookingDate | SeatNumber |
++-----------+-------------+------------+-------------+------------+
+|         1 |           1 |          1 | 2024-10-10  |         12 |
+|         2 |           2 |          1 | 2024-10-11  |         34 |
+|         3 |           3 |          2 | 2024-10-12  |         56 |
+|         4 |           4 |          3 | 2024-10-13  |         18 |
+|         5 |           5 |          4 | 2024-10-14  |         22 |
++-----------+-------------+------------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Drop table Passengers;
+ERROR 3730 (HY000): Cannot drop table 'passengers' referenced by a foreign key constraint 'fk_passenger' on table 'bookings'.
+mysql> Drop table Bookings;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> Select * from Bookings;
+ERROR 1146 (42S02): Table 'railwaymanagementdb.bookings' doesn't exist
+mysql> Drop table Routes;
+ERROR 3730 (HY000): Cannot drop table 'routes' referenced by a foreign key constraint 'fk_route' on table 'schedules'.
+mysql> Drop table Schedules;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> Drop table Routes;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> Drop table Trains;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> Drop database RailwayManagementDB;
+Query OK, 4 rows affected (0.04 sec)
+
+mysql> Use RailwayManagementDB;
+ERROR 1049 (42000): Unknown database 'railwaymanagementdb'
+mysql>
