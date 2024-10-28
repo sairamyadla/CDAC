@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop down</title>
+</head>
+<body>
+    <center><select id = "myselect">
+        <option>Select Option</option>
+        <option>OS</option>
+        <option>OOPJ</option>
+        <option>ADS</option>
+        <option>DBT</option>
+        <option>WPT</option>
+        <option>CPP</option>
+        <option>Adv Java</option>
+    </select></center><br><br>
+    <center><button onclick="Fun()">Remove</button></center>
+
+    <script>
+        function Fun(){
+            var x = document.getElementById("myselect");
+            x.remove(x.selectedIndex);
+        }
+    </script>
+
+
+</body>
+</html>

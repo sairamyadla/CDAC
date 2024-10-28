@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bold Text</title>
+    <style>
+        a {
+            font-size: 30px;
+            margin-left: 13%;
+        }
+        .highlight {
+            color: rgb(128, 126, 0);
+            font-weight: bold;
+        }
+        #text {
+            font-size: 26px;
+            margin-left: 1%;
+        }
+    </style>
+</head>
+<body>
+    <p><a href="#" onmouseover="highlightBold()" onmouseout="removeHighlight()">On mouse over here bold words of the following paragraph will be highlighted</a></p>
+    <p id="text">
+        <b>Diwali</b> is my favorite festival. On this day <b>Lord Ram</b> returned to Ayodhya after killing <b>Ravana</b>. It is a festival of light.
+        People decorate their houses. <b>Goddess Lakshmi</b> is worshipped in the evening.
+        People distribute sweets and gifts among friends and relatives.
+        There is a practice of exploding <b>crackers</b> at night which is not good for health and the environment.
+     </p>
+
+    <script>
+        function highlightBold() {
+            let boldWords = document.querySelectorAll("#text b");
+            boldWords.forEach(word => {
+                word.classList.add("highlight");
+            });
+        }
+
+        function removeHighlight() {
+            let boldWords = document.querySelectorAll("#text b");
+            boldWords.forEach(word => {
+                word.classList.remove("highlight");
+            });
+        }
+    </script>
+</body>
+</html>
