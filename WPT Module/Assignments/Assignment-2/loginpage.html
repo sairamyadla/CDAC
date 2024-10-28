@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #87CEEB;
+            background-image: url('img.jpeg'); 
+ 
+        }
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #0b060a;
+            text-decoration: none;
+        }
+        .home-link i {
+            margin-right: 5px;
+        }
+        .login-container {
+            background-color: pink;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            width: 300px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+        }
+        .login-container .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3f0dca; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-container .btn:hover {
+            background-color: #199494;
+        }
+        .login-container a {
+            font-size: 12px;
+            text-decoration: none;
+            color: #42a5f5; 
+        }
+        .login-container .forgot-password {
+            text-align: left;
+        }
+        .login-container .signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <a href="Mypage.html" class="home-link"><i class="fas fa-home"></i>Home</a>
+    <div class="login-container">
+        <h2>Sign in Form</h2>
+        <form>
+            <input type="text" placeholder="Email or Phone" required>
+            <input type="password" placeholder="Password" required><br>
+            <a href="#" class="forgot-password">Forgot Password?</a><br>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="signup-link">
+            <p>Don't have an account? <a href="#">Signup now</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        header img {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: green;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            background-color: orange;
+            border-radius: 5px;
+        }
+
+        .info {
+            margin: 40px 15%;
+            text-align: justify;
+        }
+
+        .info p {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+
+        .book-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 15%;
+        }
+
+        .book-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            width: 80%;
+        }
+
+        .book-item img {
+            width: 150px;
+            height: 200px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .book-item .book-details {
+            max-width: 500px;
+        }
+
+        .book-item .book-details h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .book-item .book-details p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: white;
+        }
+
+        footer a i {
+            margin: 0 10px;
+            transition: transform 0.2s ease;
+            color: white;
+            font-size: 24px;
+        }
+
+        footer a i:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="book.png" alt="Bookstore Logo" width="100px" height="100px">
+        <h1>Online Book Store</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="Aboutus.html">About Us</a></li>
+            <li><a href="loginpage.html">Sign in</a></li>
+            <li><a href="Signup.html">Sign up</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+            <li><a href="StudentRegistration.html">User Registration</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+
+    <div class="info">
+        <p><center><i><b>Welcome to Online Book Store.</i></b></center></p>
+        <p>Dear readers,<br>
+        We offer a huge collection of books from diverse categories such as Fiction, Non-fiction, Biographies,
+        History, Religion, Self-Help, and more. Our extensive collection includes fields like Investments and Management, Computers,
+        Engineering, Medical, College, and School text reference books.</p>
+    </div>
+
+    <div class="book-container">
+        <div class="book-item">
+            <img src="os.jpeg" alt="Operating Systems">
+            <div class="book-details">
+                <h3>Operating Systems</h3>
+                <p>An essential book for understanding operating systems, covering fundamental concepts, structures, and processes involved in OS management.</p>
+                <p>Cost: $30</p>
+            </div>
+        </div>
+        
+        <div class="book-item">
+            <img src="java.jpeg" alt="OOP with Java">
+            <div class="book-details">
+                <h3>OOP with Java</h3>
+                <p>This book dives deep into object-oriented programming with Java, ideal for both beginners and advanced Java programmers.</p>
+                <p>Cost: $40.5</p>
+            </div>
+        </div>
+
+        <div class="book-item">
+            <img src="ds.jpeg" alt="Data Structures">
+            <div class="book-details">
+                <h3>Data Structures</h3>
+                <p>Comprehensive insights into data structures, covering stacks, queues, linked lists, trees, and more to boost your programming efficiency.</p>
+                <p>Cost: $55</p>
+            </div>
+        </div>
+
+        <div class="book-item">
+            <img src="dbms.png" alt="Database Management Systems">
+            <div class="book-details">
+                <h3>Database Management Systems</h3>
+                <p>A detailed guide on database management, this book provides concepts, models, and SQL commands essential for database handling.</p>
+                <p>Cost: $35.5</p>
+            </div>
+        </div>
+
+        <div class="book-item">
+            <img src="wpt.jpeg" alt="Web Programming Technologies">
+            <div class="book-details">
+                <h3>Web Programming Technologies</h3>
+                <p>An excellent resource on web programming, covering HTML, CSS, JavaScript, and back-end technologies for full-stack development.</p>
+                <p>Cost: $63</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Online Book Store. All Rights Reserved.</p>
+        <p>Contact us at support@onlinebookstore.com</p>
+        <div>
+            <a href="https://www.amazon.com" target="_blank"><i class="fab fa-amazon"></i></a>
+            <a href="https://www.flipkart.com" target="_blank"><i class="fas fa-shopping-cart"></i></a>
+            <a href="https://www.ebay.com" target="_blank"><i class="fab fa-ebay"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

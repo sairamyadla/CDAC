@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #0b060a;
+            text-decoration: none;
+        }
+        .home-link i {
+            margin-right: 5px;
+        }
+        h1 {
+            color: green;
+            text-align: center;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-size: 18px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: right;
+            padding: 10px;
+            margin-right: 15%;
+        }
+        .checkout-btn {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <a href="Mypage.html" class="home-link"><i class="fas fa-home"></i>Home</a>
+
+    <h1>Your Shopping Cart</h1>
+    
+    <table>
+        <tr>
+            <th>Book Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td>Java</td>
+            <td>$40.5</td>
+            <td>2</td>
+            <td>$81</td>
+        </tr>
+        <tr>
+            <td>WPT</td>
+            <td>$63</td>
+            <td>1</td>
+            <td>$63</td>
+        </tr>
+        <tr>
+            <td>DBT</td>
+            <td>$35.5</td>
+            <td>1</td>
+            <td>$35.5</td>
+        </tr>
+    </table>
+
+    <div class="total">
+        Total Amount: $179.5
+    </div>
+
+    <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+
+</body>
+</html>
