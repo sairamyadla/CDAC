@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        table{
+        display: block;
+        width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <center><h2>Student Registration</h2></center>
+    <form>
+        <center><table border="1" bgcolor="#D3D2B5" cellspacing="10">
+            <tr><td><label for="fname">First Name:</label></td>
+            <td><input type = "text" id = "fname" name = "fname" placeholder="Enter first name" size ="50" required></td></tr>
+            <tr><td><label for="cfname">Confirm First Name:</label></td>
+            <td><input type = "text" id = "cfname" name = "cfname" placeholder="Confirm first name" size ="50" required></td></tr>
+            <tr><td><label for="mname">Middle Name:</label></td>
+            <td><input type = "text" id = "mname" name = "mname" placeholder="Enter middle name" size ="50" ></td></tr>
+            <tr><td><label for="cmname">Confirm Middle Name:</label></td>
+            <td><input type = "text" id = "cmname" name = "cmname" placeholder="confirm middle name" size ="50" ></td></tr>
+            <tr><td><label for="lname">Last Name:</label></td>
+            <td><input type = "text" id = "lname" name = "lname" placeholder="Enter last name" size ="50" required></td></tr>
+            <tr><td><label for="clname">Confirm Last Name:</label></td>
+            <td><input type = "text" id = "clname" name = "clname" placeholder="confirm last name" size ="50" required></td></tr>
+            <tr><td><label for="fullname">Full Name:</label></td>
+            <td><input type = "text" id = "clname" name = "clname" placeholder="Enter Full name" size ="100" required></td></tr>   
+            <tr><td><label for="text">        </label></td>
+            <td><p>The name entered in the online application form should match exactly with the requisite documnets (photo ID etc.) to be to be produces at the time of the examination and the interview
+                You will be debarred from the selection process,if there is any disrepency in the name entered by you in the online application form and the name printed in the documents produced at the time of examination/Interview.However only 35 characters will be printed in your call letter.<b>Any 
+                requests for subsequent changes regarding the changes will not be entertained.</p></td></tr> 
+            <tr><td><label for="pnum">Mobile Number:</label></td>
+            <td><input type = "tel" id = "pnum" name = "pnum" placeholder="Enter mobile number" size ="10" required></td></tr>
+            <tr><td><label for="cpnum">Confirm Mobile Number:</label></td>
+            <td><input type = "tel" id = "cpnum" name = "cpnum" placeholder="Confirm mobile number" size ="10" required></td></tr>
+            <tr><td><label for="Apnum">Alternate Mobile Number:</label></td>
+            <td><input type = "tel" id = "Apnum" name = "Apnum" placeholder="Enter alternate mobile number" size ="10" ></td></tr>   
+            <tr><td><label for="text">        </label></td>
+            <td><p>Pleasecheck that the mentioned mobile number and the email-id will only be the medium to notify you all about the updates.It is in your own interest
+                that both the details should be valid and kept active till the selection process.<b>Any requests for subsequent changes regarding the changes will not be entertained.</p></td></tr> 
+            <tr><td><label>Email Id:</label></td>
+            <td><input type="email" id="email" name="email" size="60" placeholder = "Enter email" required></td></tr>
+            <tr><td><label>Confirm Email Id:</label></td>
+            <td><input type="cemail" id="cemail" name="cemail" size="60" placeholder = "confirm email" required></td></tr>
+            <tr><td><label for="text">        </label></td>
+            <td><p>Enter the word in the textbox as in the image</p></td></tr>
+            <tr><td><label for="Security">Security</label></td>
+            <td><input type="Security" id="Security" name="Security" size="10" required><img src = "security.jpg" alt = "captcha"/></td></tr>
+
+        </table>
+        </center><br>
+        <button type="submit" value="Submit">Save & Next</button>
+
+    </form>
+     
+</body>
+</html>
