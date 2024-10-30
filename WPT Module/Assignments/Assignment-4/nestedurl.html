@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested URL</title>
+</head>
+<body>
+    
+<script>
+    function fetchData(url, callback) {
+    setTimeout(() => {
+        const data = `Response from ${url}`;
+        callback(null, data);
+    }, 1000);
+}
+
+function processData(data, callback) {
+    setTimeout(() => {
+        const processedData = `${data} processed`;
+        callback(null, processedData);
+    }, 1000);
+}
+
+fetchData("https://www.flipkart.com/", (err, data) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(data);
+        processData(data, (err, processedData) => {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(processedData);
+            }
+        });
+    }
+});
+</script>        
+</body>
+</html>

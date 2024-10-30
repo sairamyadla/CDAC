@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array for each</title>
+</head>
+<body>
+    <script>
+
+        function forEachElement(arr,CallBack){
+            for(let i=0;i<arr.length;i++){
+                CallBack(arr[i],i);
+            }
+        }
+
+        forEachElement([1,2,3,4,5],(element,index)=>{
+            console.log(`Element ${index}: ${element*2}`)
+        });
+    </script>
+</body>
+</html>
